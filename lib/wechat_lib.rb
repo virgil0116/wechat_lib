@@ -1,4 +1,5 @@
 require 'wechat_lib/version'
+require 'wechat_lib/client'
 
 module WechatLib
 
