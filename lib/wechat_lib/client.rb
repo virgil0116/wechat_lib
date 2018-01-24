@@ -2,8 +2,9 @@ module WechatLib
 
   class Client
     attr_accessor :app_id, :app_secret, :expired_at # Time.now + expires_in
-
     attr_accessor :access_token
+
+    include Api::User
 
     def initialize(app_id='', app_secret='', expired_at=nil)
       @app_id = app_id
@@ -29,6 +30,10 @@ module WechatLib
     end
 
     private
+
+    def access_token_param
+      "access_token=#{get_access_token}"
+    end
 
     def authenticate_url
       "#{endpoint}/token?grant_type=client_credential&appid=#{@app_id}&secret=#{@app_secret}"
