@@ -3,8 +3,8 @@ require "bundler/setup"
 require "wechat_lib"
 
 $client ||= WechatLib.configure do |config|
-  config.app_id = 'xxx'
-  config.app_secret = 'xxx'
+  config.app_id = ENV['app_id']
+  config.app_secret = ENV['app_secret']
 end
 
 RSpec.configure do |config|
