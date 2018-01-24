@@ -11,4 +11,5 @@
 # rspec failure tracking
 .rspec_status
 
-.idea/*
+.idea
+.idea/wechat_lib.iml
