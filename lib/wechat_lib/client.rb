@@ -5,6 +5,7 @@ module WechatLib
     attr_accessor :access_token
 
     include Api::User
+    include Api::Menu
 
     def initialize(app_id='', app_secret='', expired_at=nil)
       @app_id = app_id
