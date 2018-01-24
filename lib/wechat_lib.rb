@@ -1,4 +1,4 @@
-require "wechat_lib/version"
+require 'wechat_lib/version'
 
 module WechatLib
   # Your code goes here...
