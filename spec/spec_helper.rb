@@ -1,5 +1,11 @@
+require 'rspec'
 require "bundler/setup"
 require "wechat_lib"
+
+$client ||= WechatLib.configure do |config|
+  config.app_id = 'xxx'
+  config.app_secret = 'xxx'
+end
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
