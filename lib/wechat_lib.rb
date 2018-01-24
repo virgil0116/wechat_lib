@@ -1,3 +1,6 @@
+require 'byebug'
+require 'json'
+require 'rest-client'
 require 'wechat_lib/version'
 require 'wechat_lib/client'
 
