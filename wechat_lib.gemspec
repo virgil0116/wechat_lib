@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = '微信公众号简单描述.'
   spec.description   = '微信公众号对接的描述.'
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = 'https://github.com/virgil0116/wechat_lib'
   spec.license       = 'MIT'
 
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'byebug'
   spec.add_development_dependency 'rest-client', '>= 2.0.2'
+  spec.add_development_dependency 'multi_json', '~> 1.13', '>= 1.13.1'
 
   spec.add_development_dependency 'bundler', '~> 1.15'
   spec.add_development_dependency 'rake', '~> 10.0'

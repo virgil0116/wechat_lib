@@ -6,6 +6,7 @@ module WechatLib
 
     include Api::User
     include Api::Menu
+    include Api::Custom
 
     def initialize(app_id='', app_secret='', expired_at=nil)
       @app_id = app_id
