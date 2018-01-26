@@ -9,26 +9,46 @@
 ##### 基础支持-获取access_token - GET
 https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
 
-##### 获取用户基本信息（包括UnionID机制）- GET
+##### 获取用户基本信息（包括UnionID机制）- GET - api/user
 https://api.weixin.qq.com/cgi-bin/user/info?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN
 
 ##### 获取用户列表 - GET
 https://api.weixin.qq.com/cgi-bin/user/get?access_token=ACCESS_TOKEN&next_openid=NEXT_OPENID
 
-##### 自定义菜单创建接口 - POST
+##### 自定义菜单创建接口 - POST  - api/menu
 https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN
 
-##### 自定义菜单查询接口 - GET
+##### 自定义菜单查询接口 - GET 
 https://api.weixin.qq.com/cgi-bin/menu/get?access_token=ACCESS_TOKEN
 
 ##### 自定义菜单删除接口 - GET
 https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=ACCESS_TOKEN
 
 
-#### 客服接口-发送消息
+#### 客服接口-发送消息 - POST - api/custom
 https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=ACCESS_TOKEN
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### H5页面获取设备信息 (未做、暂时略过)
+##### 新增分组 - POST - api/groups
+https://api.weixin.qq.com/shakearound/device/group/add?access_token=ACCESS_TOKENPOST
 
 
 
