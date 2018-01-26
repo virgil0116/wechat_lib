@@ -4,15 +4,15 @@
 
 Add this line to your application's Gemfile:
 
-    gem 'weixin_lib'
+  `gem 'weixin_lib'`
 
 And then execute:
 
-    $ bundle
+  `$ bundle`
 
 Or install it yourself as:
 
-    $ gem install weixin_lib
+  `$ gem install weixin_lib`
 
 ## Usage
 
@@ -59,10 +59,10 @@ $client ||= WeixinAuthorize::Client.new(ENV["APPID"], ENV["APPSECRET"])
   `send_text_custom(to_user, content)`
 
 * 发送图片信息
- `sent_image_custom(to_user, media_id)`
+ `send_image_custom(to_user, media_id, msgtype)`
 
 * 发送语音消息
-  `sent_voice_custom(to_user, media_id)`
+  `send_voice_custom(to_user, media_id)`
   
   
 
