@@ -2,9 +2,9 @@ require 'spec_helper'
 
 RSpec.describe WechatLib::Client do
   describe 'get_access_token' do
-    # it 'should return a access_token nil value before authenticate' do
-    #   expect($client.access_token).to eq(nil)
-    # end
+    it 'should return a access_token nil value before authenticate' do
+      expect($client.access_token).to eq(nil)
+    end
 
     it 'should return a access_token after authenticate' do
       $client.authenticate

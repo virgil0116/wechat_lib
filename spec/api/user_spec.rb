@@ -12,7 +12,7 @@ RSpec.describe WechatLib::Api::User do
 
   describe 'can get users infos' do
     # $client.get_access_token
-    followers = $client.users
+    followers = $client.followers
     puts followers
   end
 

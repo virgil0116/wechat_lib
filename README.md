@@ -1,30 +1,5 @@
 # WechatLib
 
-1, 获取access_token: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
-
-2, 上传多媒体文件
-
-http请求方式: POST/FORM
-http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=TYPE
-调用示例（使用curl命令，用FORM表单方式上传一个多媒体文件）：
-curl -F media=@test.jpg "http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=TYPE"
-
-3, 发送客服消息
-
-http请求方式: POST
-https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=ACCESS_TOKEN
-
-4, 获取用户基本信息
-
-http请求方式: GET
-https://api.weixin.qq.com/cgi-bin/user/info?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN
-
-5, 获取关注者列表
-
-http请求方式: GET（请使用https协议）
-https://api.weixin.qq.com/cgi-bin/user/get?access_token=ACCESS_TOKEN&next_openid=NEXT_OPENID
-
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -41,12 +16,53 @@ Or install it yourself as:
 
 ## Usage
 
+### Init a `client`
 
+```ruby
 
-## Contributing
+$client ||= WeixinAuthorize.configure do |config|
+  config.app_id     = ENV["APPID"]
+  config.app_secret = ENV["APPSECRET"]
+  config.expired_at = Time.now.to_i
+end
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+# Or
+
+$client ||= WeixinAuthorize::Client.new(ENV["APPID"], ENV["APPSECRET"])
+
+```
+
+### 获取用户管理信息
+
+* [获取用户基本信息](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140839)
+
+  `user_info = $client.user(ENV["OPENID"])`
+
+* [获取关注者列表](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140840)
+
+  `followers = $client.followers`
+
+### 自定义菜单
+
+* [自定义菜单创建接口](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141013)
+  `response = $client.create_menu(menu)`
+
+* [自定义菜单查询接口](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141014)
+  `response = $client.menu`
+
+* [自定义菜单删除接口](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141015)
+  `response = $client.delete_menu`
+
+### [发送客服信息](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140547)
+
+* 发送文本信息
+  `send_text_custom(to_user, content)`
+
+* 发送图片信息
+ `sent_image_custom(to_user, media_id)`
+
+* 发送语音消息
+  `sent_voice_custom(to_user, media_id)`
+  
+  
+

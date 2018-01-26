@@ -8,11 +8,13 @@ ENV['APPSECRET']  ='1a5721c25dd3430723abc41fa59f4efe'
 ENV['OPENID']     ='oNpko1LoJbtUHdm77bmLs5DhRNGA'
 ENV['TEMPLATE_ID']='xxx'
 
-$client ||= WechatLib.configure do |config|
-  config.app_id     = ENV['APPID']
-  config.app_secret = ENV['APPSECRET']
-  config.expired_at = Time.now.to_i
-end
+# $client ||= WechatLib.configure do |config|
+#   config.app_id     = ENV['APPID']
+#   config.app_secret = ENV['APPSECRET']
+#   config.expired_at = Time.now.to_i
+# end
+
+$client = WechatLib::Client.new(ENV['APPID'], ENV['APPSECRET'])
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
