@@ -20,7 +20,9 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'multi_json', '~> 1.13', '>= 1.13.1'
   spec.add_dependency 'redis', '~> 4.0', '>= 4.0.1'
+  spec.add_dependency 'redis-namespace', '~> 1.6'
   spec.add_dependency 'rest-client', '>= 2.0.2'
+  spec.add_dependency 'pry-rails', '~> 0.3.6'
 
   spec.add_development_dependency 'bundler', '~> 1.15'
   spec.add_development_dependency 'rake', '~> 10.0'

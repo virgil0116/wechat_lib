@@ -24,16 +24,27 @@ Or install it yourself as:
 
 ```ruby
 
-$client ||= WeixinAuthorize.configure do |config|
-  config.app_id     = ENV["APPID"]
-  config.app_secret = ENV["APPSECRET"]
-  config.expired_at = Time.now.to_i
-end
-
-# Or
-
 $client ||= WeixinAuthorize::Client.new(ENV["APPID"], ENV["APPSECRET"])
 
+```
+
+### Configure
+
+* create file in: config/initializers/wechat_lib.rb
+
+```ruby
+require 'redis'
+require 'redis-namespace'
+require 'wechat_lib'
+# don't forget change namespace
+redis = Redis.new(:host => '127.0.0.1', :port => '6379')
+# We suggest you use a special db in Redis, when you need to clear all data, you can use flushdb command to clear them.
+redis.select(3)
+# Give a special namespace as prefix for Redis key, when your have more than one project used weixin_authorize, this config will make them work fine.
+redis = Redis::Namespace.new('your_app_name:wechat_lib', :redis => redis)
+WechatLib.configure do |config|
+  config.redis = redis
+end
 ```
 
 ### 获取用户管理信息

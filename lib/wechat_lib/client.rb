@@ -1,4 +1,7 @@
 # encoding: utf-8
+
+require 'redis'
+
 module WechatLib
 
   class Client

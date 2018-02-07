@@ -2,6 +2,16 @@ require 'rspec'
 require "bundler/setup"
 require "wechat_lib"
 require "multi_json"
+require 'redis'
+require 'redis-namespace'
+
+require 'pry-rails'
+
+redis = Redis.new(:host => '127.0.0.1', :port => '6379')
+redis_namepsace_ns = Redis::Namespace.new('your_app_name:wechat_lib', :redis => redis)
+WechatLib.configure do |config|
+  config.redis = redis
+end
 
 # If you want test, change your weixin test profile
 ENV['APPID']      = 'wxe4996ba606bcd25b'
