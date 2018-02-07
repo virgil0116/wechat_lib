@@ -11,14 +11,15 @@ module WechatLib
         http_get(user_info_url, {openid: openid, lang: lang})
       end
 
-      # 获取用户列表
+      # 获取关注者列表
       # https://api.weixin.qq.com/cgi-bin/user/get?access_token=ACCESS_TOKEN&next_openid=NEXT_OPENID
-      def followers(next_openid=nil)
+      def followers(next_openid = '')
         users_url = "#{user_base_url}/get"
         http_get(users_url, {next_openid: next_openid})
       end
 
       private
+
       def user_base_url
         '/user'
       end

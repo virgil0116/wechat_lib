@@ -28,7 +28,7 @@ module WechatLib
       #             "media_id":"MEDIA_ID"
       #         }
       # }
-      def send_media_custom(to_user, media_id, msgtype)
+      def send_media_custom(to_user, media_id, msgtype, options = {})
         message = default_options(to_user).merge({msgtype: msgtype,image: {media_id: media_id}})
         http_post(custom_base_url, MultiJson.dump(message))
       end
