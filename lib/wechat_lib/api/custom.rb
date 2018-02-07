@@ -16,7 +16,7 @@ module WechatLib
       #   }
       def send_text_custom(to_user, content)
         message = default_options(to_user).merge({msgtype: 'text', text: {content: content}})
-        http_post(custom_base_url, MultiJson.dump(message))
+        http_post(custom_base_url, message)
       end
 
       # 发送图片、语音消息
@@ -29,13 +29,13 @@ module WechatLib
       #         }
       # }
       def send_image_custom(to_user, media_id, msgtype, options = {})
-        message = default_options(to_user).merge({msgtype: 'image',image: {media_id: media_id}})
-        http_post(custom_base_url, MultiJson.dump(message))
+        message = default_options(to_user, 'image').merge({image: {media_id: media_id}})
+        http_post(custom_base_url, message)
       end
 
       def send_voice_custom(to_user, media_id, msgtype, options = {})
-        message = default_options(to_user).merge({msgtype: 'voice',image: {media_id: media_id}})
-        http_post(custom_base_url, MultiJson.dump(message))
+        message = default_options(to_user, 'voice').merge({voice: {media_id: media_id}})
+        http_post(custom_base_url, message)
       end
 
       # 发送视频消息
@@ -140,8 +140,8 @@ module WechatLib
         '/message/custom/send'
       end
 
-      def default_options(to_user)
-        {touser: to_user, msgtype: ''}
+      def default_options(to_user, msgtype = 'text')
+        {touser: to_user, msgtype: msgtype}
       end
 
     end

@@ -7,6 +7,10 @@ ENV['APPID']      = 'wxe4996ba606bcd25b'
 ENV['APPSECRET']  = '1a5721c25dd3430723abc41fa59f4efe'
 ENV['OPENID']     = 'oNpko1LoJbtUHdm77bmLs5DhRNGA'
 ENV['TEMPLATE_ID']= 'xxx'
+# ENV['APPID']      = 'wxe7da46a8d471b1b4'        # lx
+# ENV['APPSECRET']  = 'ddce70051674d37e3381dcc63db221e1'
+# ENV['OPENID']     = 'omym6v28x2dujmiNfvqr2KaFfypc'
+# ENV['TEMPLATE_ID']= 'xxx'
 
 # $client ||= WechatLib.configure do |config|
 #   config.app_id     = ENV['APPID']

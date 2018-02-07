@@ -2,18 +2,23 @@ require 'spec_helper'
 
 RSpec.describe WechatLib::Api::Custom do
 
-  $client.authenticate
+  let(:text_message) do
+    "文本测试内容 - #{Time.now.to_s}"
+  end
 
-  it 'can send a text custom message' do
-    response = $client.send_text_custom(ENV['OPENID'], '测试发送文本消息')
+  it '# send a text custom message' do
+    response = $client.send_text_custom(ENV['OPENID'], text_message)
     puts response
   end
 
-  it 'can send a image custom message' do
-    response = $client.send_image_custom(ENV['OPENID'], nil, 'image')
-    puts response
-    response = $client.send_voice_custom(ENV['OPENID'], nil, 'voice')
-    puts response
+  it '# send a image custom message' do
+    pending("The test must have a media_id")
+    this_should_not_get_executed
+  end
+
+  it '# send voice custom' do
+    pending("The test must have a media_id")
+    this_should_not_get_executed
   end
 
 

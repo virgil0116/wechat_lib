@@ -61,6 +61,7 @@ module WechatLib
 
     def http_post(url, options = {}, endpoint = 'plain')
       post_api_url = endpoint_url(endpoint) + url + "?access_token=#{get_access_token}"
+      options = MultiJson.dump(options)   # to json
       JSON.parse(RestClient.post(post_api_url, options))
     end
 
