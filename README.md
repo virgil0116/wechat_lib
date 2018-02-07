@@ -28,6 +28,12 @@ $client ||= WeixinAuthorize::Client.new(ENV["APPID"], ENV["APPSECRET"])
 
 ```
 
+If you use ** Redis ** to store your access_token, you can also specify the `key`:
+
+```ruby
+$client ||= WeixinAuthorize::Client.new(ENV["APPID"], ENV["APPSECRET"], 'your_store_key')
+```
+
 ### Configure
 
 * create file in: config/initializers/wechat_lib.rb
@@ -83,10 +89,6 @@ end
   `send_voice_custom(to_user, media_id)`
   
   
-
-## 多用户微信营销平台对接
-
-> 对于多用户微信营销平台的对接，需要把每次的expired_at, access_token保存在Redis中,每次使用，则可以从Redis中获取expired_at和access_token, 即 `@client = WeixinAuthorize::Client.new(appid, appsecret, expired_at, access_token)`, 获取access_token，则仍然是：`@client.get_access_token`来获取.
 
   
   

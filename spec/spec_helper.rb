@@ -8,7 +8,7 @@ require 'redis-namespace'
 require 'pry-rails'
 
 redis = Redis.new(:host => '127.0.0.1', :port => '6379')
-redis_namepsace_ns = Redis::Namespace.new('your_app_name:wechat_lib', :redis => redis)
+redis_namepsace_ns = Redis::Namespace.new("wechat_#{Time.now.to_i}:wechat_lib", :redis => redis)
 WechatLib.configure do |config|
   config.redis = redis
 end
