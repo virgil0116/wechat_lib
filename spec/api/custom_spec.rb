@@ -10,9 +10,9 @@ RSpec.describe WechatLib::Api::Custom do
   end
 
   it 'can send a image custom message' do
-    response = $client.send_media_custom(ENV['OPENID'], nil, 'image')
+    response = $client.send_image_custom(ENV['OPENID'], nil, 'image')
     puts response
-    response = $client.send_media_custom(ENV['OPENID'], nil, 'voice')
+    response = $client.send_voice_custom(ENV['OPENID'], nil, 'voice')
     puts response
   end
 

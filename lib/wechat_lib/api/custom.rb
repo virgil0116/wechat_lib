@@ -28,8 +28,13 @@ module WechatLib
       #             "media_id":"MEDIA_ID"
       #         }
       # }
-      def send_media_custom(to_user, media_id, msgtype, options = {})
-        message = default_options(to_user).merge({msgtype: msgtype,image: {media_id: media_id}})
+      def send_image_custom(to_user, media_id, msgtype, options = {})
+        message = default_options(to_user).merge({msgtype: 'image',image: {media_id: media_id}})
+        http_post(custom_base_url, MultiJson.dump(message))
+      end
+
+      def send_voice_custom(to_user, media_id, msgtype, options = {})
+        message = default_options(to_user).merge({msgtype: 'voice',image: {media_id: media_id}})
         http_post(custom_base_url, MultiJson.dump(message))
       end
 
