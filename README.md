@@ -6,6 +6,8 @@ Add this line to your application's Gemfile:
 
   `gem 'weixin_lib'`
   
+  Or
+  
   `gem 'weixin_lib', git: "https://github.com/virgil0116/wechat_lib.git"`
 
 And then execute:
