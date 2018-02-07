@@ -3,10 +3,10 @@ require "bundler/setup"
 require "wechat_lib"
 
 # If you want test, change your weixin test profile
-ENV['APPID']      ='wxe4996ba606bcd25b'
-ENV['APPSECRET']  ='1a5721c25dd3430723abc41fa59f4efe'
-ENV['OPENID']     ='oNpko1LoJbtUHdm77bmLs5DhRNGA'
-ENV['TEMPLATE_ID']='xxx'
+ENV['APPID']      = 'wxe4996ba606bcd25b'
+ENV['APPSECRET']  = '1a5721c25dd3430723abc41fa59f4efe'
+ENV['OPENID']     = 'oNpko1LoJbtUHdm77bmLs5DhRNGA'
+ENV['TEMPLATE_ID']= 'xxx'
 
 # $client ||= WechatLib.configure do |config|
 #   config.app_id     = ENV['APPID']

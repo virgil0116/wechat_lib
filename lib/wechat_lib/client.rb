@@ -1,12 +1,13 @@
+# encoding: utf-8
 module WechatLib
 
   class Client
-    attr_accessor :app_id, :app_secret, :expired_at # Time.now + expires_in
-    attr_accessor :access_token
-
     include Api::User
     include Api::Menu
     include Api::Custom
+
+    attr_accessor :app_id, :app_secret, :expired_at # Time.now + expires_in
+    attr_accessor :access_token
 
     def initialize(app_id='', app_secret='', expired_at=nil)
       @app_id = app_id
@@ -18,7 +19,7 @@ module WechatLib
     # return token
     def get_access_token
       # 如果当前token过期时间小于当前时间，则重新获取一次
-      if self.expired_at < Time.now.to_i
+      if @expired_at < Time.now.to_i
         authenticate
       end
       @access_token
@@ -26,23 +27,42 @@ module WechatLib
 
     # authenticate access_token  https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140183
     def authenticate
-      hash_infos        = JSON.parse(RestClient.get(authenticate_url))
+      hash_infos        = http_get_without_token('/token', authenticate_options)
       self.access_token = hash_infos['access_token']
       self.expired_at   = Time.now.to_i + hash_infos['expires_in']
     end
 
     private
 
-    def access_token_param
-      "access_token=#{get_access_token}"
+    def endpoint
+      'https://api.weixin.qq.com/cgi-bin'
     end
 
     def authenticate_url
       "#{endpoint}/token?grant_type=client_credential&appid=#{@app_id}&secret=#{@app_secret}"
     end
 
-    def endpoint
-      'https://api.weixin.qq.com/cgi-bin'
+    def access_token_param
+      {access_token: get_access_token}
+    end
+
+    def authenticate_options
+      {grant_type: 'client_credential', appid: app_id, secret: app_secret}
+    end
+
+    def http_get_without_token(url, options = {})
+      get_api_url = endpoint + url
+      JSON.parse(RestClient.get(get_api_url, :params => options))
+    end
+
+    def http_get(url, options = {})
+      options = options.merge(access_token_param)
+      http_get_without_token(url, options)
+    end
+
+    def http_post(url, options = {})
+      post_api_url = endpoint + url + "?access_token=#{get_access_token}"
+      JSON.parse(RestClient.post(post_api_url, options))
     end
 
   end

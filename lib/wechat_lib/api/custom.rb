@@ -16,7 +16,7 @@ module WechatLib
       #   }
       def send_text_custom(to_user, content)
         message = default_options(to_user).merge({msgtype: 'text', text: {content: content}})
-        JSON.parse(RestClient.post(custom_base_url, MultiJson.dump(message)))
+        http_post(custom_base_url, MultiJson.dump(message))
       end
 
       # 发送图片、语音消息
@@ -30,7 +30,7 @@ module WechatLib
       # }
       def send_media_custom(to_user, media_id, msgtype)
         message = default_options(to_user).merge({msgtype: msgtype,image: {media_id: media_id}})
-        JSON.parse(RestClient.post(custom_base_url, MultiJson.dump(message)))
+        http_post(custom_base_url, MultiJson.dump(message))
       end
 
       # 发送视频消息
@@ -132,7 +132,7 @@ module WechatLib
       private
       # https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=ACCESS_TOKEN
       def custom_base_url
-        "#{endpoint}/message/custom/send?#{access_token_param}"
+        '/message/custom/send'
       end
 
       def default_options(to_user)
