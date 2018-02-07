@@ -1,6 +1,7 @@
 require 'rspec'
 require "bundler/setup"
 require "wechat_lib"
+require "multi_json"
 
 # If you want test, change your weixin test profile
 ENV['APPID']      = 'wxe4996ba606bcd25b'
