@@ -14,9 +14,9 @@ WechatLib.configure do |config|
 end
 
 # If you want test, change your weixin test profile
-ENV['APPID']      = 'wxe4996ba606bcd25b'
+ENV['APPID']      = 'wxe4996ba606bcd25b'  # vvv的微信测试号
 ENV['APPSECRET']  = '1a5721c25dd3430723abc41fa59f4efe'
-ENV['OPENID']     = 'oNpko1LoJbtUHdm77bmLs5DhRNGA'
+ENV['OPENID']     = 'oNpko1LoJbtUHdm77bmLs5DhRNGA'   # 麦子的openid
 ENV['TEMPLATE_ID']= 'xxx'
 # ENV['APPID']      = 'wxe7da46a8d471b1b4'        # lx
 # ENV['APPSECRET']  = 'ddce70051674d37e3381dcc63db221e1'
